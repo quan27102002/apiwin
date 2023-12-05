@@ -12,7 +12,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   List<User> users = [];
-   @override
+
   void initSate() {
     super.initState();
     fetchUsers();
@@ -33,7 +33,7 @@ class _HomeScreenState extends State<HomeScreen> {
           final color = user.gender == 'male' ? Colors.blue : Colors.green;
           return ListTile(
             title: Text(user.name.first),
-            subtitle: Text(phone),
+            subtitle: Text(email),
             tileColor: color,
           );
         },

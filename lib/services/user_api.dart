@@ -15,46 +15,48 @@ class UserApi {
     final json = jsonDecode(body);
     final results = json['results'] as List<dynamic>;
     final users = results.map((user) {
-      final name = Username(
-        first: user['name']['first'],
-        title: user['name']['title'],
-        last: user['name']['last'],
-      );
-      final date = user['dob']['date'];
-      final dob = UserDob(
-        age: user['dob']['age'],
-        date: DateTime.parse(date),
-      );
-      final coordinates = LocationCoordinate(
-          latitude: user['location']['coordinates']['latitude'],
-          longitude: user['location']['coordinates']['longitude']);
-      final street = LocationStreet(
-        name: user['location'][' street']['name'],
-        number: user['location'][' street']['number'],
-      );
-      final timezone = LocationTimezoneCoordinate(
-        description: user['location']['timezone']['description'],
-        offset: user['location']['timezone']['offset'],
-      );
-      final location = UserLocation(
-        city: user['location'][' city'],
-        coordinates: coordinates,
-        country: user['location']['country'],
-        postcode: user['location'][' postcode'].toString(),
-        state: user['location']['state'],
-        street: street,
-        timezone: timezone,
-      );
-      return User(
-        cell: user['cell'],
-        email: user['email'],
-        gender: user['gender'],
-        phone: user['phone'],
-        nat: user['nat'],
-        name: name,
-        dob: dob,
-        location: location,
-      );
+      // final name = Username(
+      //   first: user['name']['first'],
+      //   title: user['name']['title'],
+      //   last: user['name']['last'],
+      // );
+      // final date = user['dob']['date'];
+      // final dob = UserDob(
+      //   age: user['dob']['age'],
+      //   date: DateTime.parse(date),
+      // );
+      // final coordinates = LocationCoordinate(
+      //   latitude: user['location']['coordinates']['latitude'],
+      //   longitude: user['location']['coordinates']['longitude'],
+      // );
+      // final street = LocationStreet(
+      //   name: user['location']['street']['name'],
+      //   number: user['location']['street']['number'],
+      // );
+      // final timezone = LocationTimezone(
+      //   description: user['location']['timezone']['description'],
+      //   offset: user['location']['timezone']['offset'],
+      // );
+      // final location = UserLocation(
+      //   city: user['location']['city'],
+      //   coordinates: coordinates,
+      //   country: user['location']['country'],
+      //   postcode: user['location']['postcode'].toString(),
+      //   state: user['location']['state'],
+      //   street: street,
+      //   timezone: timezone,
+      // );
+      // return User(
+      //   cell: user['cell'],
+      //   email: user['email'],
+      //   gender: user['gender'],
+      //   phone: user['phone'],
+      //   nat: user['nat'],
+      //   name: name,
+      //   dob: dob,
+      //   location: location,
+      // );
+      return User.fromMap(user);
     }).toList();
     print("fetchUsers completed");
     return users;
